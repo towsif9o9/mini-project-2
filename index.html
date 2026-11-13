@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A responsive student portfolio created with HTML and Tailwind CSS."
+    />
+    <meta name="theme-color" content="#fdf0d5" />
+    <title>Towsif Mahmood — Student Portfolio</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ebony: {
+                50: '#f2f4f1',
+                100: '#e6e9e2',
+                200: '#ccd2c6',
+                300: '#b3bca9',
+                400: '#9aa58d',
+                500: '#818f70',
+                600: '#67725a',
+                700: '#4d5643',
+                800: '#33392d',
+                900: '#1a1d16',
+                950: '#121410'
+              },
+              'soft-fawn': {
+                50: '#f9f5ec',
+                100: '#f3ebd8',
+                200: '#e7d7b1',
+                300: '#dac28b',
+                400: '#ceae64',
+                500: '#c29a3d',
+                600: '#9b7b31',
+                700: '#745c25',
+                800: '#4e3e18',
+                900: '#271f0c',
+                950: '#1b1609'
+              },
+              'saddle-brown': {
+                50: '#fbf1ea',
+                100: '#f6e4d5',
+                200: '#eec9aa',
+                300: '#e5ad80',
+                400: '#dc9256',
+                500: '#d4772b',
+                600: '#a95f23',
+                700: '#7f471a',
+                800: '#553011',
+                900: '#2a1809',
+                950: '#1e1106'
+              },
+              'olive-bark': {
+                50: '#faf6ea',
+                100: '#f6ecd5',
+                200: '#ecdaac',
+                300: '#e3c782',
+                400: '#d9b559',
+                500: '#d0a22f',
+                600: '#a68226',
+                700: '#7d611c',
+                800: '#534113',
+                900: '#2a2009',
+                950: '#1d1707'
+              },
+              'rich-mahogany': {
+                50: '#fde7e8',
+                100: '#fccfd1',
+                200: '#f99fa2',
+                300: '#f66f74',
+                400: '#f33f45',
+                500: '#f00f17',
+                600: '#c00c12',
+                700: '#90090e',
+                800: '#600609',
+                900: '#300305',
+                950: '#220203'
+              },
+              paper: '#fdf0d5',
+              ink: '#1a1d16',
+              forest: '#220203',
+              leaf: '#ceae64',
+              muted: '#4d5643',
+              line: '#ccd2c6'
+            },
+            fontFamily: {
+              display: ['Georgia', '"Times New Roman"', 'serif']
+            }
+          }
+        }
+      };
+    </script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 6rem;
+      }
+
+      body {
+        min-width: 320px;
+      }
+
+      ::selection {
+        color: #1a1d16;
+        background: #ceae64;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-paper font-sans text-ink antialiased">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-leaf focus:px-5 focus:py-3 focus:font-semibold focus:text-forest"
+    >
+      Skip to content
+    </a>
+
+    <header class="sticky top-0 z-40 border-b border-line/80 bg-paper/95 backdrop-blur">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
+        <a href="#home" class="flex items-center gap-3" aria-label="Towsif Mahmood, home">
+          <span class="grid size-10 place-items-center rounded-full bg-forest font-display text-lg font-bold text-leaf">TM</span>
+          <span class="text-sm font-semibold tracking-wide">TOWSIF MAHMOOD<span class="text-muted"> / PORTFOLIO</span></span>
+        </a>
+
+        <nav aria-label="Main navigation" class="hidden md:block">
+          <ul class="flex items-center gap-8 text-sm font-medium">
+            <li><a class="transition-colors hover:text-muted focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink" href="#about">About</a></li>
+            <li><a class="transition-colors hover:text-muted focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink" href="#work">Projects</a></li>
+            <li><a class="rounded-full bg-ink px-5 py-3 text-paper transition hover:bg-ebony-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink" href="#contact">Contact me <span aria-hidden="true">↗</span></a></li>
+          </ul>
+        </nav>
+
+        <button
+          id="menu-toggle"
+          class="grid size-11 place-items-center rounded-full border border-line text-ink transition hover:bg-ebony-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink md:hidden"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg id="menu-icon" aria-hidden="true" class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
+
+      <nav id="mobile-menu" aria-label="Mobile navigation" class="hidden border-t border-line bg-paper px-5 py-3 md:hidden">
+        <ul class="space-y-1">
+          <li><a class="block rounded-xl px-4 py-3 font-medium hover:bg-ebony-800 focus-visible:outline-2 focus-visible:outline-ink" href="#about">About</a></li>
+          <li><a class="block rounded-xl px-4 py-3 font-medium hover:bg-ebony-800 focus-visible:outline-2 focus-visible:outline-ink" href="#work">Projects</a></li>
+          <li><a class="block rounded-xl px-4 py-3 font-medium hover:bg-ebony-800 focus-visible:outline-2 focus-visible:outline-ink" href="#contact">Contact me ↗</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section id="home" class="px-5 pb-12 pt-6 sm:px-8 sm:pb-16 sm:pt-10 lg:px-12">
+        <div class="mx-auto grid max-w-7xl overflow-hidden rounded-[2rem] bg-forest text-white lg:min-h-[590px] lg:grid-cols-[1.05fr_0.95fr]">
+          <div class="flex flex-col items-start justify-center px-7 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20">
+            <p class="mb-7 inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/75">
+              <span class="size-2 rounded-full bg-leaf"></span>
+              Software Development Student
+            </p>
+            <h1 class="max-w-2xl font-display text-5xl leading-[1.03] tracking-[-0.04em] sm:text-6xl lg:text-7xl">
+              Thoughtful ideas,<br />
+              <span class="text-leaf">made for the web.</span>
+            </h1>
+            <p class="mt-6 max-w-lg text-base leading-7 text-white/70 sm:text-lg sm:leading-8">
+              Hello, I’m <strong class="font-semibold text-white">Your Name</strong>. I’m learning to turn useful ideas into clear, friendly digital experiences.
+            </p>
+            <div class="mt-9 flex flex-wrap items-center gap-3">
+              <a href="#work" class="inline-flex items-center gap-3 rounded-full bg-leaf px-6 py-4 text-sm font-semibold text-forest transition hover:-translate-y-0.5 hover:bg-soft-fawn-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-leaf">
+                Explore my work <span aria-hidden="true">↓</span>
+              </a>
+              <a href="#about" class="rounded-full px-5 py-4 text-sm font-semibold text-white/80 transition hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">More about me</a>
+            </div>
+            <p class="mt-12 text-xs font-medium uppercase tracking-[0.16em] text-white/45">Currently studying · CSE-2340</p>
+          </div>
+
+          <div class="relative min-h-[330px] overflow-hidden bg-olive-bark-900 sm:min-h-[430px] lg:min-h-full" aria-label="Decorative student portfolio illustration" role="img">
+            <div class="absolute -right-24 -top-28 size-80 rounded-full border border-white/10 sm:size-[27rem]"></div>
+            <div class="absolute -right-10 -top-14 size-64 rounded-full border border-white/10 sm:size-[22rem]"></div>
+            <div class="absolute bottom-[-5rem] left-[-3rem] size-56 rounded-full bg-leaf/10 blur-2xl sm:size-72"></div>
+            <div class="absolute left-1/2 top-1/2 w-[min(72%,330px)] -translate-x-1/2 -translate-y-1/2 rotate-[-4deg] rounded-[1.75rem] border border-white/15 bg-white/10 p-3 shadow-2xl backdrop-blur-sm">
+              <div class="rounded-[1.25rem] bg-paper p-5 text-ink sm:p-7">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-semibold uppercase tracking-[0.16em] text-muted">A little about me</span>
+                  <span class="size-2 rounded-full bg-olive-bark-500"></span>
+                </div>
+                <div class="mt-8 grid aspect-square place-items-center overflow-hidden rounded-[1.1rem] bg-soft-fawn-100">
+                  <div class="relative grid size-[68%] place-items-center rounded-full bg-leaf">
+                    <div class="absolute inset-3 rounded-full border border-ink/10"></div>
+                    <span class="font-display text-6xl tracking-[-0.08em] text-forest sm:text-7xl">TM</span>
+                    <span class="absolute -right-2 top-5 grid size-10 place-items-center rounded-full bg-forest text-lg text-leaf">✳</span>
+                  </div>
+                </div>
+                <div class="mt-5 flex items-end justify-between gap-3">
+                  <div>
+                    <p class="font-display text-2xl">Towsif Mahmood</p>
+                    <p class="mt-1 text-sm text-muted">Curious by nature.</p>
+                  </div>
+                  <span class="rounded-full border border-line px-3 py-2 text-[10px] font-semibold uppercase tracking-wider text-muted">Student</span>
+                </div>
+              </div>
+            </div>
+            <div class="absolute left-[8%] top-[18%] rotate-[-8deg] rounded-full bg-leaf px-4 py-3 text-xs font-semibold text-forest shadow-lg sm:left-[12%]">Learning every day ✦</div>
+            <div class="absolute bottom-[12%] right-[7%] rotate-[5deg] rounded-2xl border border-white/15 bg-forest/80 px-4 py-3 text-xs font-medium text-white shadow-lg sm:right-[10%]">HTML <span class="px-1 text-leaf">/</span> Tailwind CSS</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="px-5 py-16 sm:px-8 sm:py-24 lg:px-12" aria-labelledby="about-title">
+        <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-muted">01 / A little introduction</p>
+            <h2 id="about-title" class="mt-5 max-w-md font-display text-4xl leading-tight tracking-[-0.03em] sm:text-5xl">A student with a curious mind.</h2>
+          </div>
+          <div class="pt-1">
+            <p class="max-w-3xl text-lg leading-8 text-muted">
+              I’m a Computer Science and Engineering student interested in how design and code work together. I enjoy breaking a big problem into small steps, learning new tools, and making pages that are comfortable to use on any screen.
+            </p>
+            <ul class="mt-9 grid gap-4 sm:grid-cols-3" aria-label="Key strengths">
+              <li class="rounded-2xl border border-line bg-soft-fawn-50 p-5">
+                <span class="text-2xl" aria-hidden="true">⌘</span>
+                <h3 class="mt-4 font-semibold">Build</h3>
+                <p class="mt-2 text-sm leading-6 text-muted">Semantic HTML and responsive layouts.</p>
+              </li>
+              <li class="rounded-2xl border border-line bg-soft-fawn-50 p-5">
+                <span class="text-2xl" aria-hidden="true">✳</span>
+                <h3 class="mt-4 font-semibold">Design</h3>
+                <p class="mt-2 text-sm leading-6 text-muted">Color, spacing, and readable type.</p>
+              </li>
+              <li class="rounded-2xl border border-line bg-soft-fawn-50 p-5">
+                <span class="text-2xl" aria-hidden="true">↗</span>
+                <h3 class="mt-4 font-semibold">Improve</h3>
+                <p class="mt-2 text-sm leading-6 text-muted">Small iterations and new ideas.</p>
+              </li>
+            </ul>
+            <ul class="mt-8 flex flex-wrap gap-2" aria-label="Skills">
+              <li class="rounded-full bg-ebony-100 px-4 py-2 text-xs font-semibold text-ebony-900">HTML</li>
+              <li class="rounded-full bg-ebony-100 px-4 py-2 text-xs font-semibold text-ebony-900">Tailwind CSS</li>
+              <li class="rounded-full bg-ebony-100 px-4 py-2 text-xs font-semibold text-ebony-900">Responsive design</li>
+              <li class="rounded-full bg-ebony-100 px-4 py-2 text-xs font-semibold text-ebony-900">JavaScript basics</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" class="border-y border-line bg-soft-fawn-50 px-5 py-16 sm:px-8 sm:py-24 lg:px-12" aria-labelledby="work-title">
+        <div class="mx-auto max-w-7xl">
+          <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-muted">02 / Selected practice</p>
+              <h2 id="work-title" class="mt-5 font-display text-4xl tracking-[-0.03em] sm:text-5xl">Things I’ve been exploring.</h2>
+            </div>
+            <p class="max-w-sm text-sm leading-6 text-muted">Three small concepts that show the kind of interfaces I’d like to make more of.</p>
+          </div>
+
+          <div class="mt-10 grid gap-5 md:grid-cols-3" aria-label="Portfolio projects">
+            <article class="group overflow-hidden rounded-[1.5rem] border border-line bg-paper transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div class="relative grid h-56 place-items-center overflow-hidden bg-olive-bark-950 p-7" aria-hidden="true">
+                <div class="absolute -right-8 -top-10 size-40 rounded-full bg-saddle-brown-600"></div>
+                <div class="relative w-full max-w-[230px] rounded-2xl bg-ebony-100 p-4 text-ebony-900 shadow-xl transition duration-300 group-hover:rotate-1">
+                  <div class="flex items-center justify-between"><span class="size-8 rounded-full bg-forest"></span><span class="h-2 w-16 rounded-full bg-ebony-200"></span></div>
+                  <div class="mt-5 h-24 rounded-xl bg-ebony-50"></div>
+                  <div class="mt-4 flex gap-2"><span class="h-3 w-1/2 rounded-full bg-forest/80"></span><span class="h-3 w-1/4 rounded-full bg-leaf"></span></div>
+                </div>
+                <span class="absolute bottom-5 left-5 rounded-full bg-ebony-100/90 px-3 py-2 text-[10px] font-semibold uppercase tracking-wider text-ebony-900">Community</span>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between gap-3"><h3 class="font-display text-2xl">Campus Club</h3><span class="text-xs text-muted">01</span></div>
+                <p class="mt-3 text-sm leading-6 text-muted">A welcoming landing page concept for sharing events and bringing students together.</p>
+                <p class="mt-5 text-xs font-semibold uppercase tracking-wider text-muted">HTML · Responsive layout</p>
+              </div>
+            </article>
+
+            <article class="group overflow-hidden rounded-[1.5rem] border border-line bg-paper transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div class="relative grid h-56 place-items-center overflow-hidden bg-saddle-brown-950 p-7" aria-hidden="true">
+                <div class="absolute -bottom-14 -left-12 size-48 rounded-full bg-rich-mahogany-700/70"></div>
+                <div class="relative w-full max-w-[230px] rotate-[2deg] rounded-2xl bg-soft-fawn-100 p-4 text-ebony-900 shadow-xl transition duration-300 group-hover:rotate-0">
+                  <div class="flex items-center justify-between"><span class="font-display text-lg">good food</span><span class="text-lg">✳</span></div>
+                  <div class="mt-4 grid grid-cols-2 gap-2"><div class="h-20 rounded-xl bg-saddle-brown-200"></div><div class="h-20 rounded-xl bg-olive-bark-200"></div></div>
+                  <div class="mt-4 h-2 w-2/3 rounded-full bg-soft-fawn-200"></div><div class="mt-2 h-2 w-1/2 rounded-full bg-soft-fawn-50"></div>
+                </div>
+                <span class="absolute bottom-5 left-5 rounded-full bg-ebony-100/90 px-3 py-2 text-[10px] font-semibold uppercase tracking-wider text-ebony-900">Food & drink</span>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between gap-3"><h3 class="font-display text-2xl">Sunday Table</h3><span class="text-xs text-muted">02</span></div>
+                <p class="mt-3 text-sm leading-6 text-muted">A warm restaurant website concept with a simple menu preview and clear directions.</p>
+                <p class="mt-5 text-xs font-semibold uppercase tracking-wider text-muted">Tailwind CSS · Components</p>
+              </div>
+            </article>
+
+            <article class="group overflow-hidden rounded-[1.5rem] border border-line bg-paper transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div class="relative grid h-56 place-items-center overflow-hidden bg-rich-mahogany-950 p-7" aria-hidden="true">
+                <div class="absolute -right-12 bottom-[-4rem] size-52 rounded-full bg-rich-mahogany-800"></div>
+                <div class="relative w-full max-w-[230px] rounded-2xl bg-soft-fawn-100 p-4 text-ebony-900 shadow-xl transition duration-300 group-hover:-rotate-1">
+                  <div class="flex items-center justify-between"><span class="font-semibold">Today</span><span class="grid size-7 place-items-center rounded-full bg-soft-fawn-200 text-sm">+</span></div>
+                  <div class="mt-4 space-y-2"><div class="flex items-center gap-3 rounded-lg bg-soft-fawn-50 p-2"><span class="size-3 rounded-full bg-olive-bark-500"></span><span class="h-2 w-28 rounded-full bg-ebony-200"></span></div><div class="flex items-center gap-3 rounded-lg bg-soft-fawn-50 p-2"><span class="size-3 rounded-full bg-rich-mahogany-400"></span><span class="h-2 w-20 rounded-full bg-ebony-200"></span></div><div class="flex items-center gap-3 rounded-lg bg-soft-fawn-50 p-2"><span class="size-3 rounded-full bg-saddle-brown-400"></span><span class="h-2 w-24 rounded-full bg-ebony-200"></span></div></div>
+                </div>
+                <span class="absolute bottom-5 left-5 rounded-full bg-ebony-100/90 px-3 py-2 text-[10px] font-semibold uppercase tracking-wider text-ebony-900">Productivity</span>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between gap-3"><h3 class="font-display text-2xl">Study Notes</h3><span class="text-xs text-muted">03</span></div>
+                <p class="mt-3 text-sm leading-6 text-muted">A lightweight study planner concept designed to make a busy day feel manageable.</p>
+                <p class="mt-5 text-xs font-semibold uppercase tracking-wider text-muted">UI concept · Mobile-first</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="px-5 py-16 sm:px-8 sm:py-24 lg:px-12" aria-labelledby="contact-title">
+        <div class="mx-auto max-w-7xl rounded-[2rem] bg-forest px-7 py-12 text-white sm:px-12 sm:py-16 lg:flex lg:items-end lg:justify-between lg:px-16">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">03 / Say hello</p>
+            <h2 id="contact-title" class="mt-5 max-w-2xl font-display text-4xl leading-tight tracking-[-0.03em] sm:text-5xl">Have an idea? I’d love to hear about it.</h2>
+            <p class="mt-5 max-w-xl leading-7 text-white/65">I’m always happy to learn, collaborate, and talk about thoughtful ideas for the web.</p>
+          </div>
+          <a href="mailto:mahmoodtowsif18@gmail.com" class="mt-8 inline-flex shrink-0 items-center gap-3 rounded-full bg-leaf px-6 py-4 text-sm font-semibold text-forest transition hover:-translate-y-0.5 hover:bg-soft-fawn-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-leaf lg:mb-1 lg:ml-8 lg:mt-0" aria-label="Send an email to mahmoodtowsif18@gmail.com">
+            mahmoodtowsif18@gmail.com <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="px-5 pb-8 sm:px-8 lg:px-12">
+      <div class="mx-auto flex max-w-7xl flex-col gap-3 border-t border-line pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+        <p>© 2026 Towsif Mahmood. Made as a learning project.</p>
+        <a href="#home" class="font-semibold text-ink transition hover:text-muted focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink">Back to top ↑</a>
+      </div>
+    </footer>
+
+    <script>
+      const menuToggle = document.querySelector("#menu-toggle");
+      const mobileMenu = document.querySelector("#mobile-menu");
+
+      if (menuToggle && mobileMenu) {
+        function setMenuState(isOpen) {
+          mobileMenu.classList.toggle("hidden", !isOpen);
+          menuToggle.setAttribute("aria-expanded", String(isOpen));
+          menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+        }
+
+        function closeMenu() {
+          setMenuState(false);
+        }
+
+        menuToggle.addEventListener("click", () => {
+          const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+          setMenuState(!isExpanded);
+        });
+
+        mobileMenu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", closeMenu);
+        });
+
+        document.addEventListener("click", (event) => {
+          const target = event.target;
+          const clickedInsideMenu = mobileMenu.contains(target);
+          const clickedToggle = menuToggle.contains(target);
+
+          if (!clickedInsideMenu && !clickedToggle && menuToggle.getAttribute("aria-expanded") === "true") {
+            closeMenu();
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            closeMenu();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
